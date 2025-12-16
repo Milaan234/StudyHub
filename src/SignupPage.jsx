@@ -45,13 +45,13 @@ function SignupPage({setLoggedIn, setPage}) {
 
     return (
         <>
-            <Container fluid style={{marginLeft:"0px", paddingLeft:"20px", marginRight:"0px", paddingRight:"20px", width:"100%", maxWidth:"100%", paddingTop:"60px"}}>
+            <Container className="mb-5" fluid style={{marginLeft:"0px", paddingLeft:"20px", marginRight:"0px", paddingRight:"20px", width:"100%", maxWidth:"100%", paddingTop:"60px"}}>
                 <Row className='g-5 justify-content-center'>
                 <Col xs={12} md={6} lg={6}>
                         <Card className='bg-transparent' style={{borderWidth:"0px"}}>
                             <Card.Header className='bg-transparent' style={{borderRadius:"15px", borderWidth:"0px"}}>
                                 <h1 style={{color: "#003366", textAlign:"left", fontSize:"45px"}}>StudyHub</h1>
-                                <h3 className='mt-3' style={{color: "#003366", textAlign:"left"}}>An AI-Powered Study Tool to help students learn productively</h3>
+                                <h3 className='mt-3' style={{color: "#003366", textAlign:"left"}}>An AI-Powered study tool to help students learn productively</h3>
                             </Card.Header>
                             <Card.Body style={{color: "#003366"}}>
                                 <Card className='d-flex flex-row align-items-center mb-4' style={{color: "#003366", padding:"10px", boxShadow:"0px 0px 10px lightgrey"}}><LightningChargeFill size={60} color="#003366" className='me-3'/><h4>Take AI generated <b>Practice Quizzes</b> to meet test day with confidence</h4></Card>

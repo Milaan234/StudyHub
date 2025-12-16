@@ -34,7 +34,7 @@ function LoginPage({setLoggedIn, setPage}) {
   
     return (
         <>
-            <Container fluid style={{marginLeft:"0px", paddingLeft:"20px", marginRight:"0px", paddingRight:"20px", width:"100%", maxWidth:"100%", paddingTop:"60px"}}>
+            <Container className="mb-5" fluid style={{marginLeft:"0px", paddingLeft:"20px", marginRight:"0px", paddingRight:"20px", width:"100%", maxWidth:"100%", paddingTop:"60px"}}>
                 <Row className='g-5 justify-content-center'>
                     <Col xs={12} md={6} lg={6}>
                         <Card className='bg-transparent' style={{borderWidth:"0px"}}>
