@@ -18,6 +18,7 @@ function CreateStudySet({setPage, userUID, user}) {
   const [numFlashcards, setNumFlashcards] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
 
+  /*
   async function getDateDiff() {
     let lastUsedRaw = await getLastDefaultAPIUse(user);
 
@@ -71,26 +72,46 @@ function CreateStudySet({setPage, userUID, user}) {
       flashcardsArray = newStudySet[1];
       enhancedNotes = newStudySet[2];
     }
+    */
 
+    async function createStudySet() {
+      setIsLoading(true);
+      const userAPIKey = await getUserAPIKey(user);
+  
+      console.log("calling function");
+  
+      let newStudySet = {};
+      let questionsArray = [];
+      let flashcardsArray = [];
+      let enhancedNotes = "";
+  
+      if(userAPIKey) {
+        newStudySet = await createStudySetWithAI(studyNotes, numQuestions, numFlashcards, userAPIKey, true);
+        questionsArray = newStudySet[0];
+        flashcardsArray = newStudySet[1];
+        enhancedNotes = newStudySet[2];
+      } else {
+        console.log("Unable to get user API key.");
+        alert("No API key found. Please enter a valid Gemini API key in Settings.");
+        setIsLoading(false);
+        return;
+      }
     
+      if(!questionsArray || questionsArray.length === 0) {
+        console.log("Error getting AI response with user API key");
+        alert("Error receiving AI response. Please make sure API key is valid.");
+        setIsLoading(false);
+        return;
+      }
 
-    if(!questionsArray || questionsArray.length === 0) {
-      console.log("Error getting AI response with default API key");
-      alert("Error receiving AI response");
+      console.log("Saving study set to database");
+      const newStudySetID = crypto.randomUUID();
+      await saveStudySetToDB(userUID, newStudySetID, studySetTitle, studyNotes, questionsArray, flashcardsArray, enhancedNotes);
+      console.log("done");
       setIsLoading(false);
-      return;
-    } else {
-      await updateLastDefaultAPIUse(user);
+      alert("Study set created!");
+      setPage("allStudySets");
     }
-
-    console.log("Saving study set to database");
-    const newStudySetID = crypto.randomUUID();
-    await saveStudySetToDB(userUID, newStudySetID, studySetTitle, studyNotes, questionsArray, flashcardsArray, enhancedNotes);
-    console.log("done");
-    setIsLoading(false);
-    alert("Study set created!");
-    setPage("allStudySets");
-  }
 
   return (
     <>
