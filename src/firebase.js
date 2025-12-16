@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Import the functions needed from the SDKs needed
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, writeBatch, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, writeBatch, getDocs, deleteDoc, getDocsFromServer } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
 // Web app's Firebase configuration
@@ -20,5 +20,5 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { app, auth, db, onAuthStateChanged, doc, setDoc, getDoc, updateDoc, collection, writeBatch, getDocs};
+export { app, auth, db, onAuthStateChanged, doc, setDoc, getDoc, updateDoc, collection, writeBatch, getDocs, deleteDoc, getDocsFromServer, updateProfile};
 //////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,14 @@
-import { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { LightningChargeFill, CardText, JournalText } from 'react-bootstrap-icons';
+
+import { useState } from 'react';
 import {auth} from "./firebase.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 function LoginPage({setLoggedIn, setPage}) {
@@ -12,7 +20,6 @@ function LoginPage({setLoggedIn, setPage}) {
         if(!email || !password) {
             alert("Please fill in all fields!");
         } else {
-            // try logging in
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 setLoggedIn(true);
@@ -27,17 +34,48 @@ function LoginPage({setLoggedIn, setPage}) {
   
     return (
         <>
-            <h1>Login</h1>
-            <form onClick={(e)=>{e.preventDefault()}} id="loginForm">
-                <h2>Email</h2>
-                <input type="text" id="loginEmail" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} required></input>
-                <h2>Password</h2>
-                <input type="password" id="loginPassword" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}} required></input>
-                <button id="loginButton" onClick={tryLogin}>Log in</button>
-                <br>
-                </br>
-                <button id="gotoSignupButton" onClick={()=>{setPage("signup")}}>Sign up</button>
-            </form>
+            <Container fluid style={{marginLeft:"0px", paddingLeft:"20px", marginRight:"0px", paddingRight:"20px", width:"100%", maxWidth:"100%", paddingTop:"60px"}}>
+                <Row className='g-5 justify-content-center'>
+                    <Col xs={12} md={6} lg={6}>
+                        <Card className='bg-transparent' style={{borderWidth:"0px"}}>
+                            <Card.Header className='bg-transparent' style={{borderRadius:"15px", borderWidth:"0px"}}>
+                                <h1 style={{color: "#003366", textAlign:"left", fontSize:"45px"}}>Study App</h1>
+                                <h3 className='mt-3' style={{color: "#003366", textAlign:"left"}}>An AI-Powered Study Tool to help students boost productivity</h3>
+                            </Card.Header>
+                            <Card.Body style={{color: "#003366"}}>
+                                <Card className='d-flex flex-row align-items-center mb-4' style={{color: "#003366", padding:"10px", boxShadow:"0px 0px 10px lightgrey"}}><LightningChargeFill size={60} color="#003366" className='me-3'/><h4>Take AI generated <b>Practice Quizzes</b> to meet test day with confidence</h4></Card>
+                                <Card className='d-flex flex-row align-items-center mb-4' style={{color: "#003366", padding:"10px", boxShadow:"0px 0px 10px lightgrey"}}><CardText size={50} color="#003366" className='me-3'/><h4>Strengthen knowledge with <b>Flashcards</b> created with AI</h4></Card>
+                                <Card className='d-flex flex-row align-items-center mb-4' style={{color: "#003366", padding:"10px", boxShadow:"0px 0px 10px lightgrey"}}><JournalText size={57} color="#003366" className='me-3'/><h4>Study AI <b>Enhanced Notes</b> to efficiently understand the subject</h4></Card>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={6} lg={6}>
+                        <Card style={{width:"100%", maxWidth:"450px", borderRadius:"15px"}}>
+                            <Card.Header className='bg-transparent' style={{borderRadius:"15px", borderWidth:"0px"}}>
+                                <h1 style={{color: "#003366", textAlign:"center"}}>Login</h1>
+                            </Card.Header>
+                            <Card.Body>
+                                <Form onClick={(e)=>{e.preventDefault()}} id="loginForm">
+                                    <Form.Group>
+                                        <Form.Label style={{fontSize:"24px", fontWeight:"600", color: "#003366"}}>Email</Form.Label>
+                                        <Form.Control type="text" id="loginEmail" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} size="md" required></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label className="mt-3" style={{fontSize:"24px", fontWeight:"600", color: "#003366"}}>Password</Form.Label>
+                                        <Form.Control type="password" id="loginPassword" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}} size="md" required></Form.Control>
+                                    </Form.Group>
+                                    <Button className='mt-3' variant="primary" id="loginButton" onClick={tryLogin}  style={{fontSize:"20px"}}>Log in</Button>
+                                    <br>
+                                    </br>
+                                    <Button className='mt-3' variant="outline-primary" id="gotoSignupButton" onClick={()=>{setPage("signup")}}>Sign up</Button>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                
+            </Container>
+
         </>
     )
 }
