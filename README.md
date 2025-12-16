@@ -2,7 +2,7 @@
 
 StudyHub is an AI-Powered study tool to help students learn productively.
 
-Uses the power of AI to help understand the subject clearly and concisely and drive learning with hands-on practice.
+Uses the power of AI to help users understand subjects clearly and concisely and drive learning with hands-on practice.
 
 - Calls the Gemini API to generate study content using user's original study notes.
 - Created with JS React.
