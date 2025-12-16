@@ -1,16 +1,17 @@
-# React + Vite
+# StudyHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+StudyHub is an AI-Powered study tool to help students learn productively. Use the power of AI to understand the subject clearly and concisely and drive learning with hands-on practice.
 
-Currently, two official plugins are available:
+Calls the Gemini API to generate study content using user's original study notes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Created with JS React. Integrated with Firebase Firestore + Authentication.
 
-## React Compiler
+## Key Features:
+## 1. **Practice Quizzes**
+Take AI generated Practice Quizzes to meet test day with confidence
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 2. **Flashcards**
+Strengthen knowledge with Flashcards created with AI
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 3. **Enhanced Notes**
+Study AI Enhanced Notes to efficiently understand the subject
